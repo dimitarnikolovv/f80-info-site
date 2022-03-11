@@ -1,44 +1,46 @@
 <script>
-    import {link, location} from 'svelte-spa-router'
+    import { link, location } from 'svelte-spa-router';
     import active from 'svelte-spa-router/active';
-    import ArrowRight from './icons/ArrowRight.svelte';
+    import Arrow from './icons/Arrow.svelte';
 
-
-$: isActive = function(url) {
-    return (url === $location) ? true : false;
-}
-
+    $: isActive = function (url) {
+        return url === $location ? true : false;
+    };
 </script>
 
 <nav>
     <ul>
-        <li><a href="/" use:link use:active={'/'}>Home</a> 
+        <li>
+            <a href="/" use:link use:active={'/'}>Home</a>
             <div class="arrow">
-                <ArrowRight active={isActive('/')}/>
+                <Arrow active={isActive('/')} directional={true} />
             </div>
         </li>
-        <li><a href="/statistics" use:link use:active={'/statistics'}>Statistics</a>
+        <li>
+            <a href="/statistics" use:link use:active={'/statistics'}>Statistics</a>
             <div class="arrow">
-                <ArrowRight active={isActive('/statistics')}/>
+                <Arrow active={isActive('/statistics')} directional={true} />
             </div>
         </li>
-        <li><a href="/contact" use:link use:active={'/contact'}>Contact</a>
+        <li>
+            <a href="/contact" use:link use:active={'/contact'}>Contact</a>
             <div class="arrow">
-                <ArrowRight active={isActive('/contact')}/>
+                <Arrow active={isActive('/contact')} directional={true} />
             </div>
         </li>
+    </ul>
 </nav>
 
 <style lang="scss">
-    :global(a.active){
+    :global(a.active) {
         color: white;
     }
 
-    ul{
+    ul {
         display: flex;
         gap: 1rem;
-        
-        li{
+
+        li {
             font-weight: 500;
             font-style: normal;
             display: flex;
@@ -49,18 +51,18 @@ $: isActive = function(url) {
             color: #aaa;
             // background-color: #5f7d95;
 
-            div{
+            div {
                 transition: transform 200ms ease-in-out;
             }
         }
 
-        a{
+        a {
             padding-inline-start: 0.4rem;
             transition: color 200ms ease-in-out;
 
-            &:hover{
-                & + div{
-                        transform: translateX(5px);
+            &:hover {
+                & + div {
+                    transform: translateX(5px);
                 }
             }
         }
