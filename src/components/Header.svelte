@@ -11,6 +11,7 @@
     header{
         width: 100vw;
         display: flex;
+        justify-content: center;
         background-color: var(--clr-primary-700);
     }
 

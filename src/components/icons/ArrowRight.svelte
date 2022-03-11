@@ -1,14 +1,8 @@
 <script>
-import {location} from 'svelte-spa-router'
-export let url;
 
-$: clr = isActive();
+export let active = false;
 
-$: isActive = function () {
-	if(url === $location) return 'white'
-	return 'black'
-}
-
+$: clr = active ? 'white' : '#333';
 
 </script>
 

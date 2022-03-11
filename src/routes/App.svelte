@@ -3,13 +3,13 @@
     import Header from '../components/Header.svelte'
     import Router from 'svelte-spa-router';
     import Home from './Home.svelte';
-    import About from './About.svelte';
+    import Stats from './Stats.svelte';
     import Contact from './Contact.svelte'
     import NotFound from './NotFound.svelte';
 
     let routes = {
         '/': Home,
-        '/about': About,
+        '/statistics': Stats,
         '/contact': Contact,
 
         '*': NotFound,
