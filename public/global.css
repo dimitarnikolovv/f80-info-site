@@ -665,8 +665,13 @@ body {
         Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 
     background-color: black;
+    overflow-x: hidden;
 }
 
 :root {
     --clr-primary-700: #212529;
+}
+
+html {
+    overflow-x: hidden;
 }

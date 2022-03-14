@@ -1,8 +1,15 @@
 <script>
     export let clr = 'white';
+    export let cp = '';
+    export let mediaSmall = false;
 </script>
 
-<section style="background-color: {clr}">
+<section>
+    <div
+        id={mediaSmall ? 'mediaSmall' : ''}
+        class="background"
+        style="background: {clr}; clip-path: {cp};"
+    />
     <div class="container">
         <slot />
     </div>
@@ -12,8 +19,36 @@
     section {
         display: flex;
         justify-content: center;
-        align-items: center;
-        padding: 1rem;
+        position: relative;
         width: 100vw;
+        height: 120vh;
+
+        :global(#mediaSmall) {
+            @media only screen and (max-width: 350px) {
+                height: 80vh;
+            }
+        }
+    }
+
+    div.background {
+        z-index: 0;
+        width: 100vw;
+        height: 120vh;
+        position: absolute;
+    }
+
+    div.container {
+        z-index: 1;
+        display: flex;
+        flex-direction: column;
+        width: 90vw;
+        max-width: 95%;
+        max-height: 80%;
+        padding-block: 5rem;
+        background-color: transparent;
+
+        @media only screen and (max-width: 768px) {
+            padding-block-start: 1rem;
+        }
     }
 </style>

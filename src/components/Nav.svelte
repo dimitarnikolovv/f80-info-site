@@ -2,28 +2,65 @@
     import { link, location } from 'svelte-spa-router';
     import active from 'svelte-spa-router/active';
     import Arrow from './icons/Arrow.svelte';
+    import { slide } from 'svelte/transition';
 
     $: isActive = function (url) {
         return url === $location ? true : false;
     };
+
+    let isChecked = false;
+    const doChecked = function () {
+        isChecked = !isChecked;
+    };
 </script>
 
 <nav>
-    <ul>
+    <label class="nav-button" for="check">
+        <input type="checkbox" id="check" on:click={doChecked} />
+        <span />
+        <span />
+        <span />
+
+        {#if isChecked === true}
+            <div class="nav-container" transition:slide>
+                <ul class="mobile-nav">
+                    <li>
+                        <a href="/" use:link use:active={'/'}>Начало</a>
+                        <div class="arrow">
+                            <Arrow active={isActive('/')} directional={true} />
+                        </div>
+                    </li>
+                    <li>
+                        <a href="/statistics" use:link use:active={'/statistics'}>Статистики</a>
+                        <div class="arrow">
+                            <Arrow active={isActive('/statistics')} directional={true} />
+                        </div>
+                    </li>
+                    <li>
+                        <a href="/contact" use:link use:active={'/contact'}>Контакти</a>
+                        <div class="arrow">
+                            <Arrow active={isActive('/contact')} directional={true} />
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        {/if}
+    </label>
+    <ul class="main-nav">
         <li>
-            <a href="/" use:link use:active={'/'}>Home</a>
+            <a href="/" use:link use:active={'/'}>Начало</a>
             <div class="arrow">
                 <Arrow active={isActive('/')} directional={true} />
             </div>
         </li>
         <li>
-            <a href="/statistics" use:link use:active={'/statistics'}>Statistics</a>
+            <a href="/statistics" use:link use:active={'/statistics'}>Статистики</a>
             <div class="arrow">
                 <Arrow active={isActive('/statistics')} directional={true} />
             </div>
         </li>
         <li>
-            <a href="/contact" use:link use:active={'/contact'}>Contact</a>
+            <a href="/contact" use:link use:active={'/contact'}>Контакти</a>
             <div class="arrow">
                 <Arrow active={isActive('/contact')} directional={true} />
             </div>
@@ -39,6 +76,7 @@
     ul {
         display: flex;
         gap: 1rem;
+        justify-content: center;
 
         li {
             font-weight: 500;
@@ -49,7 +87,6 @@
             gap: 0.5rem;
             height: 2rem;
             color: #aaa;
-            // background-color: #5f7d95;
 
             div {
                 transition: transform 200ms ease-in-out;
@@ -65,6 +102,83 @@
                     transform: translateX(5px);
                 }
             }
+        }
+
+        &.main-nav {
+            @media only screen and (max-width: 620px) {
+                display: none;
+            }
+        }
+
+        &.mobile-nav {
+            flex-direction: column;
+            gap: 0;
+            li {
+                width: 100vw;
+                height: 10vh;
+            }
+        }
+    }
+
+    label.nav-button {
+        display: flex;
+        flex-direction: column;
+        width: 40px;
+        cursor: pointer;
+
+        span {
+            background: #fff;
+            border-radius: 10px;
+            height: 3px;
+            margin: 5px 0;
+            transition: 0.4s cubic-bezier(0.68, -0.6, 0.32, 1.6);
+
+            &:nth-of-type(1) {
+                width: 50%;
+            }
+
+            &:nth-of-type(2) {
+                width: 100%;
+            }
+
+            &:nth-of-type(3) {
+                width: 75%;
+            }
+        }
+        input[type='checkbox'] {
+            display: none;
+        }
+
+        input[type='checkbox']:checked ~ span:nth-of-type(1) {
+            transform-origin: bottom;
+            transform: rotatez(45deg) translate(8px, 0px);
+        }
+
+        input[type='checkbox']:checked ~ span:nth-of-type(2) {
+            transform-origin: top;
+            transform: rotatez(-45deg);
+        }
+
+        input[type='checkbox']:checked ~ span:nth-of-type(3) {
+            transform-origin: bottom;
+            width: 50%;
+            transform: translate(19px, -7px) rotatez(45deg);
+        }
+        div.nav-container {
+            z-index: 3;
+            position: absolute;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            top: 6rem;
+            left: 0;
+            width: 100vw;
+            height: 30vh;
+            background-color: rgba(0, 0, 0, 0.75);
+        }
+
+        @media only screen and (min-width: 621px) {
+            display: none;
         }
     }
 </style>

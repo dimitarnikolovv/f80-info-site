@@ -26,10 +26,6 @@
 
 <style lang="scss">
     main {
-        background-color: cadetblue;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        width: 100vw;
+        background-color: white;
     }
 </style>

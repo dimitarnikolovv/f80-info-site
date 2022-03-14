@@ -1,23 +1,29 @@
 <script>
     import Nav from './Nav.svelte';
-    import Logo from './icons/Logo.svelte';
+    import F80Logo from './icons/F80Logo.svelte';
 </script>
 
 <header>
-    <Logo />
-    <Nav />
+    <div class="container">
+        <F80Logo />
+        <Nav />
+    </div>
 </header>
 
 <style lang="scss">
     header {
         position: relative;
-        display: flex;
-        justify-content: center;
-        align-items: center;
         width: 100vw;
-        height: 4rem;
         padding-block: 1rem;
         background-color: transparent;
+        div.container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 4rem;
+            max-width: 90vw;
+            margin-inline: auto;
+        }
     }
 
     header:global(.fixed) {
