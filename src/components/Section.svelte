@@ -27,6 +27,9 @@
             @media only screen and (max-width: 350px) {
                 height: 80vh;
             }
+            @media only screen and (max-width: 450px) {
+                height: 90vh;
+            }
         }
     }
 
