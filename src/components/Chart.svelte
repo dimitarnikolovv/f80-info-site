@@ -10,19 +10,6 @@
         <caption> Car Accidents </caption>
 
         <tbody>
-            <!-- <ul id="line-chart-left-axis">
-                <li>10</li>
-                <li>9</li>
-                <li>8</li>
-                <li>7</li>
-                <li>6</li>
-                <li>5</li>
-                <li>4</li>
-                <li>3</li>
-                <li>2</li>
-                <li>1</li>
-                <li>0</li>
-            </ul> -->
             <tr>
                 <th scope="row"> Label </th>
                 <td style="--start: 0.0; --size: 0.2">
@@ -113,7 +100,7 @@
             </tr>
         </tbody>
     </table>
-    <ul id="line-chart-legend" class="charts-css legend legend-inline legend-line">
+    <ul id="line-chart-legend" class="charts-css legend legend-line">
         <li class="--color: lightred">Label 1</li>
         <li class="--color: lightgreen">Label 2</li>
         <li>Label 3</li>
@@ -124,12 +111,26 @@
     #line-chart-wrap {
         display: flex;
         flex-direction: column;
+        justify-content: center;
         gap: 2rem;
-        height: 40vh;
+        height: 60vh;
     }
     #line-chart-legend {
-        width: 50%;
+        flex-direction: row;
         justify-content: space-between;
+        height: 20%;
+        width: 80%;
+        border: none;
+
+        @media only screen and (max-width: 620px) {
+            width: 100%;
+        }
+
+        @media only screen and (max-width: 400px) {
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
 
         li:nth-child(1) {
             &::before {
@@ -143,15 +144,13 @@
             }
         }
     }
-    // #line-chart-left-axis {
-    //     display: flex;
-    //     flex-direction: column;
-    //     justify-content: center;
-    //     gap: 1.1rem;
-    //     margin-block-end: 1.7rem;
-    // }
     #line-chart {
         width: 80%;
         margin: 0 auto;
+
+        @media only screen and (max-width: 620px) {
+            height: 60%;
+            width: 100%;
+        }
     }
 </style>
