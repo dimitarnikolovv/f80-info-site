@@ -10,7 +10,7 @@
         class="background"
         style="background: {clr}; clip-path: {cp};"
     />
-    <div class="container">
+    <div class="container {clr === 'white' ? 'text-dark' : 'text-light'}">
         <slot />
     </div>
 </section>
@@ -40,6 +40,9 @@
         position: absolute;
     }
 
+    :global(div.text-light) {
+        color: #17252a;
+    }
     div.container {
         z-index: 1;
         display: flex;
