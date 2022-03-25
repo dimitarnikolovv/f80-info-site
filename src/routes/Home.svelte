@@ -1,6 +1,7 @@
 <script>
     import Section from '../components/Section.svelte';
     import Main from '../components/Main.svelte';
+    import Car from '../components/icons/Car.svelte';
 
     // background: radial-gradient(circle, rgba(52,80,223,1) 0%, rgba(127,64,204,1) 100%);
     // background: radial-gradient(circle, rgba(121,52,223,1) 0%, rgba(64,123,204,1) 100%);
@@ -13,26 +14,23 @@
         mediaSmall="true"
     >
         <h1 class="heading-light">
-            Lorem ipsum <span class="text-modifier">lorem ipsum</span> dolor sit
+            Каква е <span class="text-modifier">нашата</span> цел?
         </h1>
         <div class="text-wrapper">
             <div class="left-child">
                 <p>
-                    Lorem ipsum dolor sit amet consectetur, adipisicing elit. Iusto tempora, magni
-                    neque tempore fugiat voluptas quas harum sint porro consequuntur delectus
-                    excepturi maiores, beatae, minus placeat quo fugit. Aliquam ullam sequi,
-                    consectetur, aspernatur iure veniam pariatur dignissimos similique mollitia iste
-                    quas sapiente labore itaque voluptate molestias quibusdam excepturi consequatur
-                    inventore perferendis dolorum dicta iusto autem incidunt! Aspernatur ducimus
-                    repudiandae, deserunt consequatur, rerum aliquam ullam nulla cum nemo molestias
-                    sint corporis officia id porro debitis iusto eligendi modi iure odio doloribus
-                    voluptas culpa maiores perferendis. Fugit doloremque consequatur veniam ducimus
-                    eveniet non, voluptate ab tempora vitae omnis nostrum libero eaque nobis ipsa
-                    aliquam totam veritatis similique quidem minima corporis labore at culpa. At
-                    similique veritatis aperiam nihil ipsam doloremque hic repudiandae.
+                    Глобалната цел на проекта е да се създаде единна среда за комуникация между
+                    автономни автомобили, като се включат и автомобили с шофьор като преходен
+                    период. В зависимост от пътните условия софтуерът самостоятелно преценя и
+                    контролира трафика, без да се нуждаем от светофари, като се избягва и човешка
+                    грешка. Такъв тип компютърна система трябва да бъде стандартизирана от
+                    регулаторните органи по света, за да се създаде безопасност и улеснение при
+                    пътуване.
                 </p>
             </div>
-            <div class="right-child" />
+            <div class="right-child">
+                <Car />
+            </div>
         </div>
     </Section>
 

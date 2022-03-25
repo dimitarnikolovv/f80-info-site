@@ -1,32 +1,63 @@
 <script>
     import Nav from './Nav.svelte';
     import F80Logo from './icons/F80Logo.svelte';
+
+    window.addEventListener('scroll', handleOnScroll);
+    let onScroll = false;
+
+    function handleOnScroll() {
+        const scroll = window.scrollY;
+
+        onScroll = scroll > 180 ? true : false;
+    }
 </script>
 
-<header>
+<header id="app-head" class={onScroll ? 'fixed' : ''}>
     <div class="container">
         <F80Logo />
-        <Nav />
+        <Nav onScroll={onScroll ? true : false} />
     </div>
 </header>
 
 <style lang="scss">
     header {
-        position: relative;
         width: 100vw;
         padding-block: 1rem;
         background-color: transparent;
         div.container {
+            position: relative;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            height: 4rem;
+            height: 6rem;
             max-width: 90vw;
             margin-inline: auto;
         }
     }
 
     header:global(.fixed) {
-        background-color: var(--clr-primary-700);
+        z-index: 10;
+        position: fixed;
+        background-color: rgba(0, 0, 0, 0.75);
+        animation: headerSlideDown 200ms ease-in-out;
+        .container {
+            height: 2rem;
+            :global(svg.logo) {
+                height: 2.5rem;
+            }
+        }
+    }
+
+    @keyframes headerSlideDown {
+        0% {
+            opacity: 0;
+            transform: translateY(-100%);
+        }
+        50% {
+            opacity: 1;
+        }
+        100% {
+            transform: translateY(0);
+        }
     }
 </style>

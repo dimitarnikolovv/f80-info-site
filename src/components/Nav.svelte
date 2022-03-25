@@ -4,6 +4,8 @@
     import Arrow from './icons/Arrow.svelte';
     import { slide } from 'svelte/transition';
 
+    export let onScroll = false;
+
     $: isActive = function (url) {
         return url === $location ? true : false;
     };
@@ -22,7 +24,7 @@
         <span />
 
         {#if isChecked === true}
-            <div class="nav-container" transition:slide>
+            <div class="nav-container {onScroll ? 'onScroll' : ''}" transition:slide>
                 <ul class="mobile-nav">
                     <li>
                         <a href="/" use:link use:active={'/'}>Начало</a>
@@ -46,7 +48,7 @@
             </div>
         {/if}
     </label>
-    <ul class="main-nav">
+    <ul class="main-nav {onScroll ? 'onScroll' : ''}">
         <li>
             <a href="/" use:link use:active={'/'}>Начало</a>
             <div class="arrow">
@@ -94,6 +96,9 @@
         }
 
         a {
+            text-transform: uppercase;
+            font-weight: 600;
+            font-size: large;
             padding-inline-start: 0.4rem;
             transition: color 200ms ease-in-out;
 
@@ -104,8 +109,16 @@
             }
         }
 
+        &.onScroll {
+            a {
+                text-transform: uppercase;
+                font-weight: 600;
+                font-size: 1rem;
+            }
+        }
+
         &.main-nav {
-            @media only screen and (max-width: 620px) {
+            @media only screen and (max-width: 681px) {
                 display: none;
             }
         }
@@ -170,14 +183,19 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            top: 6rem;
-            left: 0;
+            top: 6.9rem;
+            left: -5.5%;
             width: 100vw;
             height: 30vh;
             background-color: rgba(0, 0, 0, 0.75);
+            transition: transform 200ms ease-in-out;
+
+            &.onScroll {
+                transform: translateY(-3.9rem);
+            }
         }
 
-        @media only screen and (min-width: 621px) {
+        @media only screen and (min-width: 680px) {
             display: none;
         }
     }
